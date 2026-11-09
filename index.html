@@ -535,14 +535,17 @@
 
   <script>
     // 0. CONTROL DE LA CORTINA DE CARGA
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        const curtain = document.getElementById('loader-curtain');
-        if (curtain) {
-          curtain.classList.add('hide');
-        }
-      }, 1800);
-    });
+    function hideLoaderCurtain() {
+      const curtain = document.getElementById('loader-curtain');
+      if (curtain) {
+        curtain.classList.add('hide');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(hideLoaderCurtain, 1800);
+    }, { once: true });
+    setTimeout(hideLoaderCurtain, 5000);
 
     // 1. RASTRO DE BRILLOS CON EL CURSOR (SPARKLE TRAIL)
     const sparkles = ['✨', '⭐', '💫', '💖', '🍬'];
